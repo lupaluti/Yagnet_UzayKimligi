@@ -59,6 +59,7 @@
             flex: 1.3;
             min-width: 380px;
             box-shadow: 0 10px 30px rgba(148, 163, 184, 0.15);
+            box-sizing: border-box;
         }
 
         .form-group {
@@ -276,7 +277,8 @@
             align-items: center;
             transform: scale(0.9);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; /* Çarpı butonunun konumlanması için eklendi */
+            position: relative;
+            box-sizing: border-box;
         }
 
         .modal-overlay.active .modal-wrapper {
@@ -308,7 +310,7 @@
 
         .modal-close-btn:hover {
             background: #f1f5f9;
-            color: #ef4444; /* Kapatma hissi için yumuşak bir kırmızı tonu */
+            color: #ef4444; 
         }
 
         .modal-title {
@@ -318,6 +320,7 @@
             color: var(--space-blue);
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: center;
         }
 
         /* Serbest Renk Seçim Paneli */
@@ -331,6 +334,7 @@
             padding: 15px;
             border-radius: 16px;
             border: 1px solid #f1f5f9;
+            box-sizing: border-box;
         }
 
         .modal-color-label {
@@ -345,6 +349,8 @@
         .modal-color-grid {
             display: flex;
             gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .color-opt {
@@ -505,29 +511,108 @@
             font-size: 15px;
             padding: 16px;
         }
+
+        /* 📱 CRITICAL RESPONSIVE BREAKPOINT (MOBİL UYUMLULUK MOTORU) */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+
+            .control-panel {
+                min-width: unset;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .preview-area {
+                min-width: unset;
+                width: 100%;
+            }
+
+            /* Mobil Devasa Popup Düzenlemesi */
+            .modal-wrapper {
+                width: 92%;
+                padding: 25px 20px;
+                min-height: unset;
+            }
+
+            .modal-title {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .modal-close-btn {
+                top: 15px;
+                right: 15px;
+            }
+
+            /* Karusel Mobilde Sıkıştırılıyor */
+            .carousel-area {
+                gap: 15px;
+                margin-bottom: 25px;
+            }
+
+            .arrow-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            .modal-avatar-frame {
+                width: 190px;
+                height: 190px;
+                border-radius: 20px;
+            }
+
+            .modal-color-section {
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+
+            .color-opt {
+                width: 32px;
+                height: 32px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Yagnet Uzay Kimliğim</h1>
+    <h1>MÜRETTEBAT KAYIT TERMİNALİ</h1>
 
     <div class="container">
         <div class="control-panel">
             <div class="form-group">
-                <label>Takma Adınız</label>
-                <input type="text" id="nameInput" placeholder="Takma Adınızı Yazınız..." oninput="updateName(this.value)">
+                <label>Mürettebat Çağrı Kodu (Ad Soyad)</label>
+                <input type="text" id="nameInput" placeholder="Kaptan İsmini Yazın..." oninput="updateName(this.value)">
             </div>
 
             <div class="form-group">
                 <label>Avatar Tasarım Terminali</label>
-                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla</button>
+                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla / Değiştir 🎨</button>
             </div>
 
             <div class="form-group">
-                <label>Yetenek Seviyelerin</label>
+                <label>Yetenek Seviyelerin (Öz Değerlendirme)</label>
                 
                 <div class="skill-row">
-                    <span class="skill-name">Yenilikçi Teknoloji Bilgisi</span>
+                    <span class="skill-name">Yenilikçi Teknolojiler</span>
                     <div class="stars" id="stars-tech"></div>
                 </div>
                 <div class="skill-row">
@@ -543,7 +628,7 @@
                     <div class="stars" id="stars-security"></div>
                 </div>
                 <div class="skill-row">
-                    <span class="skill-name">Yapay Zekâ Kullanımı</span>
+                    <span class="skill-name">Yapay Zekâ Mantığı</span>
                     <div class="stars" id="stars-ai"></div>
                 </div>
                 <div class="skill-row">
@@ -567,14 +652,14 @@
                     <div class="card-skill-item"><span class="card-skill-label">Video Tasarım</span><span class="card-skill-stars" id="card-star-video">★☆☆☆☆</span></div>
                     <div class="card-skill-item"><span class="card-skill-label">Ağ ve İnternet</span><span class="card-skill-stars" id="card-star-network">★☆☆☆☆</span></div>
                     <div class="card-skill-item"><span class="card-skill-label">Siber Güvenlik</span><span class="card-skill-stars" id="card-star-security">★☆☆☆☆</span></div>
-                    <div class="card-skill-item"><span class="card-skill-label">Yapay Zekâ</span><span class="card-skill-stars" id="card-star-ai">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Yapay Zekâ Mantığı</span><span class="card-skill-stars" id="card-star-ai">★☆☆☆☆</span></div>
                     <div class="card-skill-item"><span class="card-skill-label">Blok Kodlama</span><span class="card-skill-stars" id="card-star-coding">★☆☆☆☆</span></div>
                 </div>
             </div>
             
             <div class="action-buttons">
-                <button class="btn btn-random" onclick="randomizeCharacter()">Rastgele Avatar</button>
-                <button class="btn btn-download" onclick="downloadCard()">Kimliğim (png indir)</button>
+                <button class="btn btn-random" onclick="randomizeCharacter()">🎲 Şansıma Güven! (Rastgele)</button>
+                <button class="btn btn-download" onclick="downloadCard()">KARTIMI BAS (PNG İNDİR)</button>
             </div>
         </div>
     </div>
@@ -583,7 +668,7 @@
         <div class="modal-wrapper">
             <button class="modal-close-btn" onclick="closeAvatarModal()">&times;</button>
             
-            <div class="modal-title" id="modalStageTitle">Karakterini Seç</div>
+            <div class="modal-title" id="modalStageTitle">Aşama 1: Karakterini Seç</div>
             
             <div class="modal-color-section">
                 <div class="modal-color-label">Kabin Arka Plan Rengini Değiştir</div>
@@ -664,7 +749,6 @@
             document.getElementById('avatarModal').classList.add('active');
         }
 
-        // POPUP'I DEĞİŞİKLİKLERİ KAYDETMEDEN KAPATAN SİHİRLİ FONKSİYON
         function closeAvatarModal() {
             document.getElementById('avatarModal').classList.remove('active');
         }
