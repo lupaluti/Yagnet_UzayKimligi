@@ -276,10 +276,39 @@
             align-items: center;
             transform: scale(0.9);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; /* Çarpı butonunun konumlanması için eklendi */
         }
 
         .modal-overlay.active .modal-wrapper {
             transform: scale(1);
+        }
+
+        /* Popup Çarpı Kapatma Butonu Stili */
+        .modal-close-btn {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            line-height: 1;
+            padding: 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            user-select: none;
+        }
+
+        .modal-close-btn:hover {
+            background: #f1f5f9;
+            color: #ef4444; /* Kapatma hissi için yumuşak bir kırmızı tonu */
         }
 
         .modal-title {
@@ -552,6 +581,8 @@
 
     <div class="modal-overlay" id="avatarModal">
         <div class="modal-wrapper">
+            <button class="modal-close-btn" onclick="closeAvatarModal()">&times;</button>
+            
             <div class="modal-title" id="modalStageTitle">Aşama 1: Karakterini Seç</div>
             
             <div class="modal-color-section">
@@ -633,6 +664,11 @@
             document.getElementById('avatarModal').classList.add('active');
         }
 
+        // POPUP'I DEĞİŞİKLİKLERİ KAYDETMEDEN KAPATAN SİHİRLİ FONKSİYON
+        function closeAvatarModal() {
+            document.getElementById('avatarModal').classList.remove('active');
+        }
+
         function updateModalView() {
             const imgEl = document.getElementById('modalAvatarImage');
             const titleEl = document.getElementById('modalStageTitle');
@@ -684,7 +720,7 @@
             document.getElementById('avatarFrame').style.backgroundColor = savedColor;
             document.getElementById('avatarImage').src = `img/hayvan_${savedAnimal}_kostum_${savedCostume}.png`;
 
-            document.getElementById('avatarModal').classList.remove('active');
+            closeAvatarModal();
         }
 
         function changeSkillRating(skillKey, value) {
