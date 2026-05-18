@@ -50,7 +50,7 @@
             flex-wrap: wrap;
         }
 
-        /* Form Kontrol Paneli */
+        /* Ana Panel Tasarımı */
         .control-panel {
             background-color: var(--panel-bg);
             padding: 30px;
@@ -91,124 +91,6 @@
             color: var(--text-color);
             box-sizing: border-box;
             font-size: 15px;
-            transition: border-color 0.2s;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: var(--space-blue);
-        }
-
-        /* Pastel Renkler */
-        .color-grid {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .color-opt {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s;
-            box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
-        }
-
-        .color-opt:hover {
-            transform: scale(1.1);
-        }
-
-        .color-opt.selected {
-            transform: scale(1.1);
-            border-color: var(--text-color);
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        }
-
-        /* Kaydırmalı Ekranlar */
-        .scroll-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding: 10px 5px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-            scrollbar-color: #cbd5e1 transparent;
-        }
-
-        .scroll-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        /* Karakter Kartları */
-        .animal-opt {
-            flex: 0 0 120px;
-            height: 90px;
-            scroll-snap-align: start;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            transition: all 0.2s;
-            user-select: none;
-        }
-
-        .animal-opt:hover {
-            border-color: #cbd5e1;
-            background: #f1f5f9;
-        }
-
-        .animal-opt.selected {
-            background: #eff6ff;
-            border-color: var(--space-blue);
-            color: var(--space-blue);
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-        }
-
-        /* Kostüm Kartları */
-        .costume-opt {
-            flex: 0 0 140px;
-            height: 70px;
-            scroll-snap-align: start;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            text-align: center;
-            padding: 5px 10px;
-            box-sizing: border-box;
-            transition: all 0.2s;
-            user-select: none;
-        }
-
-        .costume-opt:hover {
-            border-color: #cbd5e1;
-            background: #f1f5f9;
-        }
-
-        .costume-opt.selected {
-            background: #fff1f2;
-            border-color: #f43f5e;
-            color: #e11d48;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15);
         }
 
         /* Yıldızlar */
@@ -237,12 +119,8 @@
             font-size: 20px;
             cursor: pointer;
             color: #e2e8f0;
-            transition: color 0.15s, transform 0.1s;
+            transition: color 0.15s;
             user-select: none;
-        }
-
-        .star:hover {
-            transform: scale(1.2);
         }
 
         .star.active {
@@ -272,12 +150,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .id-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 45px rgba(148, 163, 184, 0.35);
         }
 
         .id-card::before {
@@ -291,7 +163,6 @@
             letter-spacing: 1px;
         }
 
-        /* Dinamik Barkod Süslemesi */
         .id-card-barcode {
             position: absolute;
             top: 10px;
@@ -303,7 +174,6 @@
             padding-left: 3px;
         }
 
-        /* Profil Çerçevesi ve Görsel Zıplama Efekti */
         .id-card-avatar-frame {
             width: 130px;
             height: 130px;
@@ -315,7 +185,6 @@
             justify-content: center;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
             background-color: #bfe9db;
         }
 
@@ -323,12 +192,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Dinamik Animasyon Sınıfı */
-        .pop-effect {
-            transform: scale(1.15);
         }
 
         .id-card-name {
@@ -341,7 +204,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            letter-spacing: -0.5px;
         }
 
         .id-card-title {
@@ -376,22 +238,152 @@
         .card-skill-stars {
             color: var(--star-color);
             letter-spacing: 1px;
-            transition: all 0.3s;
         }
 
-        /* Aksiyon Butonları */
+        /* DİNAMİK BÜYÜK POP-UP (MODAL) STİLLERİ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-wrapper {
+            background: #ffffff;
+            width: 480px;
+            padding: 35px;
+            border-radius: 28px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-wrapper {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Pastel Renk Seçimi (Popup İçi) */
+        .modal-color-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .modal-color-grid {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Büyük Karakter Karusel Alanı */
+        .carousel-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .arrow-btn {
+            background: #f1f5f9;
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .arrow-btn:hover {
+            background: var(--space-blue);
+            color: #ffffff;
+            border-color: var(--space-blue);
+        }
+
+        /* Popup Büyük Profil Çerçevesi */
+        .modal-avatar-frame {
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #bfe9db;
+            transition: background-color 0.3s;
+        }
+
+        .modal-avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+
+        .img-pop {
+            transform: scale(1.1);
+        }
+
+        /* Butonlar */
         .action-buttons {
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
             max-width: 320px;
-            margin-top: 20px;
+            margin-top: 15px;
+        }
+
+        .modal-nav-btns {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            justify-content: center;
         }
 
         .btn {
             border: none;
-            padding: 14px 20px;
+            padding: 15px 25px;
             font-size: 14px;
             font-weight: 700;
             border-radius: 30px;
@@ -402,27 +394,48 @@
             text-align: center;
         }
 
+        .btn-main-trigger {
+            background: var(--space-blue);
+            color: white;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-main-trigger:hover {
+            background: #2563eb;
+        }
+
         .btn-random {
             background: #f1f5f9;
             color: var(--text-color);
             border: 2px dashed var(--card-border);
         }
 
-        .btn-random:hover {
-            background: #e2e8f0;
-            border-color: var(--text-muted);
-        }
-
         .btn-download {
             background: var(--text-color);
             color: #ffffff;
-            box-shadow: 0 8px 20px rgba(30, 41, 59, 0.2);
         }
 
         .btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(30, 41, 59, 0.3);
             background: #0f172a;
+        }
+
+        .btn-modal-next {
+            background: var(--space-blue);
+            color: white;
+            width: 100%;
+        }
+
+        .btn-modal-save {
+            background: #10b981;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-modal-prev {
+            background: #e2e8f0;
+            color: var(--text-color);
+            flex: 1;
         }
     </style>
 </head>
@@ -432,60 +445,49 @@
 
     <div class="container">
         <div class="control-panel">
-            
             <div class="form-group">
                 <label>Mürettebat Çağrı Kodu (Ad Soyad)</label>
                 <input type="text" id="nameInput" placeholder="Kaptan İsmini Yazın..." oninput="updateName(this.value)">
             </div>
 
             <div class="form-group">
-                <label>1. Aşama: Avatar Arka Plan Rengi</label>
-                <div class="color-grid" id="colorGrid"></div>
-            </div>
-
-            <div class="form-group">
-                <label>2. Aşama: Karakterini Seç (Sağa/Sola Kaydır)</label>
-                <div class="scroll-container" id="animalGrid"></div>
-            </div>
-
-            <div class="form-group">
-                <label>3. Aşama: Kostümünü Seç (Sağa/Sola Kaydır)</label>
-                <div class="scroll-container" id="costumeGrid"></div>
+                <label>Avatar Tasarımı</label>
+                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla / Değiştir 🎨</button>
             </div>
 
             <div class="form-group">
                 <label>Yetenek Seviyelerin (Öz Değerlendirme)</label>
                 
-                <div class="skill-row" data-skill="tech">
+                <div class="skill-row">
                     <span class="skill-name">Yenilikçi Teknolojiler</span>
-                    <div class="stars" id="stars-tech" data-skill="tech"></div>
+                    <div class="stars" id="stars-tech"></div>
                 </div>
-                <div class="skill-row" data-skill="video">
+                <div class="skill-row">
                     <span class="skill-name">Video Kurgu ve Tasarım</span>
-                    <div class="stars" id="stars-video" data-skill="video"></div>
+                    <div class="stars" id="stars-video"></div>
                 </div>
-                <div class="skill-row" data-skill="network">
+                <div class="skill-row">
                     <span class="skill-name">İnternet ve Ağ Kullanımı</span>
-                    <div class="stars" id="stars-network" data-skill="network"></div>
+                    <div class="stars" id="stars-network"></div>
                 </div>
-                <div class="skill-row" data-skill="security">
+                <div class="skill-row">
                     <span class="skill-name">Siber Güvenlik ve Etik</span>
-                    <div class="stars" id="stars-security" data-skill="security"></div>
+                    <div class="stars" id="stars-security"></div>
                 </div>
-                <div class="skill-row" data-skill="ai">
+                <div class="skill-row">
                     <span class="skill-name">Yapay Zekâ Mantığı</span>
-                    <div class="stars" id="stars-ai" data-skill="ai"></div>
+                    <div class="stars" id="stars-ai"></div>
                 </div>
-                <div class="skill-row" data-skill="coding">
+                <div class="skill-row">
                     <span class="skill-name">Blok Tabanlı Kodlama</span>
-                    <div class="stars" id="stars-coding" data-skill="coding"></div>
+                    <div class="stars" id="stars-coding"></div>
                 </div>
             </div>
         </div>
 
         <div class="preview-area">
             <div class="id-card" id="spaceCard">
-                <div class="id-card-barcode" id="cardBarcode">ASTR-2026-0000</div>
+                <div class="id-card-barcode" id="cardBarcode">RECOVERY-6B-0000</div>
                 <div class="id-card-avatar-frame" id="avatarFrame">
                     <img id="avatarImage" src="img/hayvan_1_kostum_0.png" alt="Karakter">
                 </div>
@@ -493,30 +495,12 @@
                 <div class="id-card-title">Akademi Yetenek Kartı</div>
                 
                 <div class="id-card-skills">
-                    <div class="card-skill-item">
-                        <span class="card-skill-label">Yenilikçi Tekno.</span>
-                        <span class="card-skill-stars" id="card-star-tech">★☆☆☆☆</span>
-                    </div>
-                    <div class="card-skill-item">
-                        <span class="card-skill-label">Video Tasarım</span>
-                        <span class="card-skill-stars" id="card-star-video">★☆☆☆☆</span>
-                    </div>
-                    <div class="card-skill-item">
-                        <span class="card-skill-label">Ağ ve İnternet</span>
-                        <span class="card-skill-stars" id="card-star-network">★☆☆☆☆</span>
-                    </div>
-                    <div class="card-skill-item">
-                        <span class="card-skill-label">Siber Güvenlik</span>
-                        <span class="card-skill-stars" id="card-star-security">★☆☆☆☆</span>
-                    </div>
-                    <div class="card-skill-item">
-                        <span class="card-skill-label">Yapay Zekâ Mantığı</span>
-                        <span class="card-skill-stars" id="card-star-ai">★☆☆☆☆</span>
-                    </div>
-                    <div class="card-skill-item">
-                        <span class="card-skill-label">Blok Kodlama</span>
-                        <span class="card-skill-stars" id="card-star-coding">★☆☆☆☆</span>
-                    </div>
+                    <div class="card-skill-item"><span class="card-skill-label">Yenilikçi Tekno.</span><span class="card-skill-stars" id="card-star-tech">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Video Tasarım</span><span class="card-skill-stars" id="card-star-video">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Ağ ve İnternet</span><span class="card-skill-stars" id="card-star-network">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Siber Güvenlik</span><span class="card-skill-stars" id="card-star-security">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Yapay Zekâ Mantığı</span><span class="card-skill-stars" id="card-star-ai">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Blok Kodlama</span><span class="card-skill-stars" id="card-star-coding">★☆☆☆☆</span></div>
                 </div>
             </div>
             
@@ -527,49 +511,47 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="avatarModal">
+        <div class="modal-wrapper">
+            <div class="modal-title" id="modalStageTitle">Aşama 1: Karakterini Seç</div>
+            
+            <div id="modalColorSection" style="width:100%; display:flex; flex-direction:column; align-items:center;">
+                <div class="modal-color-label">Arka Plan Rengi Seç</div>
+                <div class="modal-color-grid" id="modalColorGrid"></div>
+            </div>
+
+            <div class="carousel-area">
+                <button class="arrow-btn" onclick="cycleSelection(-1)">◀</button>
+                <div class="modal-avatar-frame" id="modalAvatarFrame">
+                    <img id="modalAvatarImage" src="img/hayvan_1_kostum_0.png" alt="Önizleme">
+                </div>
+                <button class="arrow-btn" onclick="cycleSelection(1)">▶</button>
+            </div>
+
+            <div id="modalNavArea" style="width:100%;">
+                </div>
+        </div>
+    </div>
+
     <script>
         const colors = ['#bfe9db', '#dec9ff', '#fecdd3', '#bae6fd', '#fed7aa', '#bbf7d0', '#f5d0fe', '#fef08a'];
-        const animals = ['Kedi', 'Köpek', 'Tavşan', 'Panda', 'Tilki', 'Koala', 'Ayı', 'Penguen'];
-        const costumes = ['Kostümsüz Base', 'Astronot Kaskı', 'Uzaylı Anteni', 'Siber Gözlük', 'Roket Çantası', 'Kaptan Şapkası'];
+        const totalAnimals = 8;
+        const totalCostumes = 6;
         const skillKeys = ['tech', 'video', 'network', 'security', 'ai', 'coding'];
 
-        let selectedColor = colors[0];
-        let selectedAnimalIdx = 1; 
-        let selectedCostumeIdx = 0; 
-        let currentSkills = { tech: 1, video: 1, network: 1, security: 1, ai: 1, coding: 1 };
+        // Kalıcı Durumlar (Main State)
+        let savedColor = colors[0];
+        let savedAnimal = 1;
+        let savedCostume = 0;
+
+        // Geçici Durumlar (Modal Temp State)
+        let tempColor = colors[0];
+        let tempAnimal = 1;
+        let tempCostume = 0;
+        let currentStep = 1; // 1: Hayvan Seçimi, 2: Kostüm Seçimi
 
         function initUI() {
-            // Renkleri Üret
-            const colorGrid = document.getElementById('colorGrid');
-            colors.forEach((color, idx) => {
-                const div = document.createElement('div');
-                div.className = `color-opt ${idx === 0 ? 'selected' : ''}`;
-                div.style.backgroundColor = color;
-                div.onclick = () => selectColor(color, div);
-                colorGrid.appendChild(div);
-            });
-
-            // Hayvanları Üret
-            const animalGrid = document.getElementById('animalGrid');
-            animals.forEach((animal, idx) => {
-                const div = document.createElement('div');
-                div.className = `animal-opt ${idx === 0 ? 'selected' : ''}`;
-                div.innerHTML = `<span style="font-size:24px; margin-bottom:5px;">🐾</span><span>${animal}</span>`;
-                div.onclick = () => selectAnimal(idx + 1, div);
-                animalGrid.appendChild(div);
-            });
-
-            // Kostümleri Üret
-            const costumeGrid = document.getElementById('costumeGrid');
-            costumes.forEach((costume, idx) => {
-                const div = document.createElement('div');
-                div.className = `costume-opt ${idx === 0 ? 'selected' : ''}`;
-                div.innerText = costume;
-                div.onclick = () => selectCostume(idx, div);
-                costumeGrid.appendChild(div);
-            });
-
-            // Yıldız Yapılarını İnşa Et
+            // Yıldızları oluştur
             skillKeys.forEach(key => {
                 const container = document.getElementById(`stars-${key}`);
                 for (let i = 1; i <= 5; i++) {
@@ -577,48 +559,123 @@
                     span.className = `star ${i === 1 ? 'active' : ''}`;
                     span.setAttribute('data-value', i);
                     span.innerText = '★';
-                    span.onclick = (e) => changeSkillRating(key, i);
+                    span.onclick = () => changeSkillRating(key, i);
                     container.appendChild(span);
                 }
+            });
+
+            // Renkleri Popupa Ekle
+            const modalColorGrid = document.getElementById('modalColorGrid');
+            colors.forEach((color, idx) => {
+                const div = document.createElement('div');
+                div.className = `color-opt ${idx === 0 ? 'selected' : ''}`;
+                div.style.backgroundColor = color;
+                div.onclick = () => {
+                    document.querySelectorAll('.modal-color-grid .color-opt').forEach(el => el.classList.remove('selected'));
+                    div.classList.add('selected');
+                    tempColor = color;
+                    document.getElementById('modalAvatarFrame').style.backgroundColor = color;
+                };
+                modalColorGrid.appendChild(div);
             });
 
             generateRandomBarcode();
         }
 
-        function selectColor(color, element) {
-            document.querySelectorAll('.color-opt').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            selectedColor = color;
-            document.getElementById('avatarFrame').style.backgroundColor = color;
+        // POPUP AÇMA
+        function openAvatarModal() {
+            currentStep = 1;
+            tempColor = savedColor;
+            tempAnimal = savedAnimal;
+            tempCostume = 0; // Hayvan seçerken kostümsüz başlasın
+
+            document.getElementById('modalAvatarFrame').style.backgroundColor = tempColor;
+            
+            // Renk paleti seçkisini güncelle
+            const colorOpts = document.querySelectorAll('.modal-color-grid .color-opt');
+            colorOpts.forEach(opt => {
+                opt.classList.toggle('selected', opt.style.backgroundColor === rgbToHex(tempColor));
+            });
+
+            updateModalView();
+            document.getElementById('avatarModal').classList.add('active');
         }
 
-        function selectAnimal(index, element) {
-            document.querySelectorAll('.animal-opt').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            selectedAnimalIdx = index;
-            triggerAvatarAnimation();
+        // POPUP İÇERİĞİNİ ADIMA GÖRE GÜNCELLEME
+        function updateModalView() {
+            const imgEl = document.getElementById('modalAvatarImage');
+            const titleEl = document.getElementById('modalStageTitle');
+            const colorSection = document.getElementById('modalColorSection');
+            const navArea = document.getElementById('modalNavArea');
+
+            if (currentStep === 1) {
+                titleEl.innerText = "Aşama 1: Karakterini Seç";
+                colorSection.style.display = "flex";
+                imgEl.src = `img/hayvan_${tempAnimal}_kostum_0.png`;
+                
+                navArea.innerHTML = `<button class="btn btn-modal-next" onclick="goToStepTwo()">Sonraki ➔</button>`;
+            } else {
+                titleEl.innerText = "Aşama 2: Kostümünü Seç";
+                colorSection.style.display = "none";
+                imgEl.src = `img/hayvan_${tempAnimal}_tempCostume_${tempCostume}.png`; // Güncel resim basımı
+                imgEl.src = `img/hayvan_${tempAnimal}_kostum_${tempCostume}.png`;
+
+                navArea.innerHTML = `
+                    <div class="modal-nav-btns">
+                        <button class="btn btn-modal-prev" onclick="goToStepOne()">◀ Önceki</button>
+                        <button class="btn btn-modal-save" onclick="saveModalChanges()">Kaydet ✓</button>
+                    </div>`;
+            }
+            // Zıplama efekti
+            imgEl.classList.add('img-pop');
+            setTimeout(() => imgEl.classList.remove('img-pop'), 200);
         }
 
-        function selectCostume(index, element) {
-            document.querySelectorAll('.costume-opt').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            selectedCostumeIdx = index;
-            triggerAvatarAnimation();
+        // OK TUŞLARINA BASINCA DÖNGÜSEL GEÇİŞ (CYCLE)
+        function cycleSelection(direction) {
+            if (currentStep === 1) {
+                // Hayvanları Döndür (1 - 8)
+                tempAnimal += direction;
+                if (tempAnimal > totalAnimals) tempAnimal = 1;
+                if (tempAnimal < 1) tempAnimal = totalAnimals;
+            } else {
+                // Kostümleri Döndür (0 - 5)
+                tempCostume += direction;
+                if (tempCostume >= totalCostumes) tempCostume = 0;
+                if (tempCostume < 0) tempCostume = totalCostumes - 1;
+            }
+            updateModalView();
         }
 
-        // Dinamik Pop Animasyonu Tetikleyici
-        function triggerAvatarAnimation() {
-            const imgEl = document.getElementById('avatarImage');
-            imgEl.src = `img/hayvan_${selectedAnimalIdx}_kostum_${selectedCostumeIdx}.png`;
-            imgEl.classList.add('pop-effect');
-            setTimeout(() => imgEl.classList.remove('pop-effect'), 300);
+        function goToStepTwo() {
+            currentStep = 2;
+            tempCostume = 0; // Kostüm seçimine geçerken kostümsüzden başlasın
+            updateModalView();
         }
 
+        function goToStepOne() {
+            currentStep = 1;
+            updateModalView();
+        }
+
+        // KAYDET VE POPUPTAN ÇIK
+        function saveModalChanges() {
+            savedColor = tempColor;
+            savedAnimal = tempAnimal;
+            savedCostume = tempCostume;
+
+            // Ana ekrandaki kartı güncelle
+            document.getElementById('avatarFrame').style.backgroundColor = savedColor;
+            document.getElementById('avatarImage').src = `img/hayvan_${savedAnimal}_kostum_${savedCostume}.png`;
+
+            // Popup Kapat
+            document.getElementById('avatarModal').classList.remove('active');
+        }
+
+        // YETENEK PUANI AYARI
         function changeSkillRating(skillKey, value) {
-            currentSkills[skillKey] = value;
             const container = document.getElementById(`stars-${skillKey}`);
             const stars = container.querySelectorAll('.star');
-            
             stars.forEach(star => {
                 const starVal = parseInt(star.getAttribute('data-value'));
                 star.classList.toggle('active', starVal <= value);
@@ -631,41 +688,27 @@
             document.getElementById(`card-star-${skillKey}`).innerText = starString;
         }
 
-        // TAMAMEN DİNAMİK RASTGELE SEÇİCİ (RANDOMIZER)
+        // RASTGELE HIZLI OLUŞTURUCU
         function randomizeCharacter() {
-            // 1. Rastgele Renk
-            const randColorIdx = Math.floor(Math.random() * colors.length);
-            const colorOpts = document.querySelectorAll('.color-opt');
-            selectColor(colors[randColorIdx], colorOpts[randColorIdx]);
+            savedColor = colors[Math.floor(Math.random() * colors.length)];
+            savedAnimal = Math.floor(Math.random() * totalAnimals) + 1;
+            savedCostume = Math.floor(Math.random() * totalCostumes);
 
-            // 2. Rastgele Hayvan ve Carousel Scroll
-            const randAnimalIdx = Math.floor(Math.random() * animals.length);
-            const animalOpts = document.querySelectorAll('.animal-opt');
-            selectAnimal(randAnimalIdx + 1, animalOpts[randAnimalIdx]);
-            animalOpts[randAnimalIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            document.getElementById('avatarFrame').style.backgroundColor = savedColor;
+            document.getElementById('avatarImage').src = `img/hayvan_${savedAnimal}_kostum_${savedCostume}.png`;
 
-            // 3. Rastgele Kostüm ve Carousel Scroll
-            const randCostumeIdx = Math.floor(Math.random() * costumes.length);
-            const costumeOpts = document.querySelectorAll('.costume-opt');
-            selectCostume(randCostumeIdx, costumeOpts[randCostumeIdx]);
-            costumeOpts[randCostumeIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-
-            // 4. Rastgele Yetenek Puanları
             skillKeys.forEach(key => {
                 const randValue = Math.floor(Math.random() * 5) + 1;
                 changeSkillRating(key, randValue);
             });
-
             generateRandomBarcode();
         }
 
         function generateRandomBarcode() {
             const chars = '0123456789ABCDEF';
             let code = '';
-            for (let i = 0; i < 4; i++) {
-                code += chars[Math.floor(Math.random() * chars.length)];
-            }
-            document.getElementById('cardBarcode').innerText = `MÜRETTEBAT // RECOVERY-6B-${code}`;
+            for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
+            document.getElementById('cardBarcode').innerText = `RECOVERY-6B-${code}`;
         }
 
         function updateName(val) {
@@ -675,16 +718,19 @@
         function downloadCard() {
             const card = document.getElementById('spaceCard');
             const studentName = document.getElementById('nameInput').value.trim() || "astronot";
-            
-            html2canvas(card, {
-                backgroundColor: null,
-                scale: 2 
-            }).then(canvas => {
+            html2canvas(card, { backgroundColor: null, scale: 2 }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = `${studentName}_uzay_kimlik_karti.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
+        }
+
+        // Yardımcı fonksiyon: rgb rengini hex formata dönüştürür (seçili rengi eşleştirmek için)
+        function rgbToHex(rgb) {
+            if (rgb.startsWith('#')) return rgb;
+            const rgbValues = rgb.match(/\d+/g);
+            return "#" + ((1 << 24) + (parseInt(rgbValues[0]) << 16) + (parseInt(rgbValues[1]) << 8) + parseInt(rgbValues[2])).toString(16).slice(1);
         }
 
         window.onload = initUI;
