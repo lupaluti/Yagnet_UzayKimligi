@@ -7,12 +7,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
-            --bg-color: #0a0c10;
-            --panel-bg: #121620;
-            --neon-cyan: #00f3ff;
-            --neon-magenta: #ff0055;
-            --text-color: #ffffff;
-            --star-color: #ffd700;
+            --bg-color: #f4f7fc;
+            --panel-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --space-blue: #3b82f6;
+            --star-color: #ffb703;
+            --card-border: #cbd5e1;
         }
 
         body {
@@ -24,22 +25,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-image: radial-gradient(circle, #1a2035 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-image: 
+                radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                radial-gradient(rgba(148, 163, 184, 0.15) 2px, transparent 2px);
+            background-size: 40px 40px, 120px 120px;
+            background-position: 0 0, 20px 20px;
         }
 
         h1 {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-            margin-bottom: 20px;
-            font-size: 28px;
+            color: var(--space-blue);
+            margin-bottom: 25px;
+            font-size: 30px;
             text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .container {
             display: flex;
-            gap: 30px;
-            max-width: 1100px;
+            gap: 35px;
+            max-width: 1150px;
             width: 100%;
             justify-content: center;
             flex-wrap: wrap;
@@ -48,18 +53,18 @@
         /* Form Kontrol Paneli */
         .control-panel {
             background-color: var(--panel-bg);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            flex: 1.2;
-            min-width: 350px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            flex: 1.3;
+            min-width: 380px;
+            box-shadow: 0 10px 30px rgba(148, 163, 184, 0.15);
         }
 
         .form-group {
-            margin-bottom: 22px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 20px;
         }
 
         .form-group:last-child {
@@ -69,134 +74,184 @@
 
         label {
             display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: var(--neon-cyan);
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: var(--text-color);
             font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 12px;
-            background: #181f30;
-            border: 1px solid #2c3a58;
-            border-radius: 8px;
-            color: white;
+            padding: 14px;
+            background: #f8fafc;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-color);
             box-sizing: border-box;
-            font-size: 14px;
+            font-size: 15px;
+            transition: border-color 0.2s;
         }
 
-        /* Renk Seçimi Stil */
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--space-blue);
+        }
+
+        /* Pastel Renkler */
         .color-grid {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .color-opt {
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid #000;
-            transition: transform 0.2s, border-color 0.2s;
-            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+        }
+
+        .color-opt:hover {
+            transform: scale(1.1);
         }
 
         .color-opt.selected {
-            transform: scale(1.15);
-            border-color: #fff;
-            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+            transform: scale(1.1);
+            border-color: var(--text-color);
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
         }
 
-        /* Karakter Seçimi Stil */
-        .animal-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+        /* Kaydırmalı Ekranlar */
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 5px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 transparent;
         }
 
+        .scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        /* Karakter Kartları */
         .animal-opt {
-            padding: 10px;
-            background: #181f30;
-            border: 1px solid #2c3a58;
-            border-radius: 8px;
-            text-align: center;
+            flex: 0 0 120px;
+            height: 90px;
+            scroll-snap-align: start;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 600;
             transition: all 0.2s;
+            user-select: none;
+        }
+
+        .animal-opt:hover {
+            border-color: #cbd5e1;
+            background: #f1f5f9;
         }
 
         .animal-opt.selected {
-            background: rgba(0, 243, 255, 0.15);
-            border-color: var(--neon-cyan);
-            color: var(--neon-cyan);
-            font-weight: bold;
+            background: #eff6ff;
+            border-color: var(--space-blue);
+            color: var(--space-blue);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
         }
 
-        /* Kostüm Seçimi Stil */
-        .costume-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-
+        /* Kostüm Kartları */
         .costume-opt {
-            padding: 10px;
-            background: #181f30;
-            border: 1px solid #2c3a58;
-            border-radius: 8px;
+            flex: 0 0 140px;
+            height: 70px;
+            scroll-snap-align: start;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             font-size: 13px;
+            font-weight: 600;
             text-align: center;
+            padding: 5px 10px;
+            box-sizing: border-box;
             transition: all 0.2s;
+            user-select: none;
+        }
+
+        .costume-opt:hover {
+            border-color: #cbd5e1;
+            background: #f1f5f9;
         }
 
         .costume-opt.selected {
-            background: rgba(255, 0, 85, 0.15);
-            border-color: var(--neon-magenta);
-            color: var(--neon-magenta);
-            font-weight: bold;
+            background: #fff1f2;
+            border-color: #f43f5e;
+            color: #e11d48;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15);
         }
 
-        /* Yıldız Derecelendirme */
+        /* Yıldızlar */
         .skill-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            background: #181f30;
-            padding: 10px 14px;
-            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #f1f5f9;
         }
 
         .skill-name {
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .stars {
             display: flex;
-            gap: 5px;
+            gap: 4px;
         }
 
         .star {
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
-            color: #444;
-            transition: color 0.2s;
+            color: #e2e8f0;
+            transition: color 0.15s, transform 0.1s;
             user-select: none;
+        }
+
+        .star:hover {
+            transform: scale(1.2);
         }
 
         .star.active {
             color: var(--star-color);
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
         }
 
         /* Önizleme Yetenek Kartı */
         .preview-area {
-            flex: 0.8;
+            flex: 0.7;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -205,11 +260,11 @@
 
         .id-card {
             width: 320px;
-            height: 500px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            height: 520px;
+            background: #ffffff;
+            border-radius: 24px;
+            border: 2px solid var(--card-border);
+            box-shadow: 0 15px 40px rgba(148, 163, 184, 0.25);
             padding: 25px;
             box-sizing: border-box;
             display: flex;
@@ -217,56 +272,84 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .id-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(148, 163, 184, 0.35);
         }
 
         .id-card::before {
-            content: "SECURE ID // MURETTEBAT KARTI";
+            content: "SYSTEM ID // SECURITY PANEL";
             position: absolute;
-            top: 10px;
-            left: 15px;
+            top: 12px;
+            left: 18px;
             font-size: 8px;
-            color: rgba(0, 243, 255, 0.4);
+            font-weight: 700;
+            color: var(--text-muted);
             letter-spacing: 1px;
         }
 
-        /* Profil Resmi Çerçevesi */
+        /* Dinamik Barkod Süslemesi */
+        .id-card-barcode {
+            position: absolute;
+            top: 10px;
+            right: 18px;
+            font-size: 7px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-muted);
+            border-left: 2px solid var(--text-color);
+            padding-left: 3px;
+        }
+
+        /* Profil Çerçevesi ve Görsel Zıplama Efekti */
         .id-card-avatar-frame {
-            width: 120px;
-            height: 120px;
-            margin-top: 20px;
-            border-radius: 15px;
-            border: 2px solid rgba(255,255,255,0.2);
+            width: 130px;
+            height: 130px;
+            margin-top: 25px;
+            border-radius: 20px;
+            border: 3px solid #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            transition: background-color 0.3s;
-            background-color: #00f3ff; /* Varsayılan arka plan rengi */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+            background-color: #bfe9db;
         }
 
         .id-card-avatar-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Dinamik Animasyon Sınıfı */
+        .pop-effect {
+            transform: scale(1.15);
         }
 
         .id-card-name {
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 800;
             margin-top: 15px;
-            color: white;
+            color: var(--text-color);
             text-align: center;
             max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            letter-spacing: -0.5px;
         }
 
         .id-card-title {
             font-size: 10px;
-            color: var(--neon-cyan);
+            color: var(--space-blue);
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             margin-bottom: 20px;
         }
 
@@ -274,77 +357,100 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 9px;
         }
 
         .card-skill-item {
             display: flex;
             justify-content: space-between;
             font-size: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 4px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 5px;
+            font-weight: 600;
         }
 
         .card-skill-label {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-muted);
         }
 
         .card-skill-stars {
             color: var(--star-color);
             letter-spacing: 1px;
+            transition: all 0.3s;
         }
 
-        /* Buton */
-        .btn-download {
-            margin-top: 25px;
-            background: linear-gradient(90deg, var(--neon-cyan), #00a2ff);
-            color: #000;
-            border: none;
-            padding: 14px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
-            transition: all 0.3s;
+        /* Aksiyon Butonları */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             width: 100%;
             max-width: 320px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .btn-random {
+            background: #f1f5f9;
+            color: var(--text-color);
+            border: 2px dashed var(--card-border);
+        }
+
+        .btn-random:hover {
+            background: #e2e8f0;
+            border-color: var(--text-muted);
+        }
+
+        .btn-download {
+            background: var(--text-color);
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(30, 41, 59, 0.2);
         }
 
         .btn-download:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 243, 255, 0.6);
+            box-shadow: 0 12px 25px rgba(30, 41, 59, 0.3);
+            background: #0f172a;
         }
     </style>
 </head>
 <body>
 
-    <h1>KAPTAN YETENEK KARTI ÜRETİCİSİ</h1>
+    <h1>MÜRETTEBAT KAYIT TERMİNALİ</h1>
 
     <div class="container">
         <div class="control-panel">
             
             <div class="form-group">
                 <label>Mürettebat Çağrı Kodu (Ad Soyad)</label>
-                <input type="text" id="nameInput" placeholder="İsminizi Yazın..." oninput="updateName(this.value)">
+                <input type="text" id="nameInput" placeholder="Kaptan İsmini Yazın..." oninput="updateName(this.value)">
             </div>
 
             <div class="form-group">
-                <label>1. Aşama: Kart Arka Plan Rengi</label>
-                <div class="color-grid" id="colorGrid">
-                    </div>
+                <label>1. Aşama: Avatar Arka Plan Rengi</label>
+                <div class="color-grid" id="colorGrid"></div>
             </div>
 
             <div class="form-group">
-                <label>2. Aşama: Karakter Seçimi</label>
-                <div class="animal-grid" id="animalGrid">
-                    </div>
+                <label>2. Aşama: Karakterini Seç (Sağa/Sola Kaydır)</label>
+                <div class="scroll-container" id="animalGrid"></div>
             </div>
 
             <div class="form-group">
-                <label>3. Aşama: Kostüm Donat</label>
-                <div class="costume-list" id="costumeGrid">
-                    </div>
+                <label>3. Aşama: Kostümünü Seç (Sağa/Sola Kaydır)</label>
+                <div class="scroll-container" id="costumeGrid"></div>
             </div>
 
             <div class="form-group">
@@ -352,80 +458,39 @@
                 
                 <div class="skill-row" data-skill="tech">
                     <span class="skill-name">Yenilikçi Teknolojiler</span>
-                    <div class="stars" onclick="handleStarClick(event, 'tech')">
-                        <span class="star active" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    <div class="stars" id="stars-tech" data-skill="tech"></div>
                 </div>
-
                 <div class="skill-row" data-skill="video">
                     <span class="skill-name">Video Kurgu ve Tasarım</span>
-                    <div class="stars" onclick="handleStarClick(event, 'video')">
-                        <span class="star active" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    <div class="stars" id="stars-video" data-skill="video"></div>
                 </div>
-
                 <div class="skill-row" data-skill="network">
                     <span class="skill-name">İnternet ve Ağ Kullanımı</span>
-                    <div class="stars" onclick="handleStarClick(event, 'network')">
-                        <span class="star active" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    <div class="stars" id="stars-network" data-skill="network"></div>
                 </div>
-
                 <div class="skill-row" data-skill="security">
                     <span class="skill-name">Siber Güvenlik ve Etik</span>
-                    <div class="stars" onclick="handleStarClick(event, 'security')">
-                        <span class="star active" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    <div class="stars" id="stars-security" data-skill="security"></div>
                 </div>
-
                 <div class="skill-row" data-skill="ai">
                     <span class="skill-name">Yapay Zekâ Mantığı</span>
-                    <div class="stars" onclick="handleStarClick(event, 'ai')">
-                        <span class="star active" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    <div class="stars" id="stars-ai" data-skill="ai"></div>
                 </div>
-
                 <div class="skill-row" data-skill="coding">
                     <span class="skill-name">Blok Tabanlı Kodlama</span>
-                    <div class="stars" onclick="handleStarClick(event, 'coding')">
-                        <span class="star active" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    <div class="stars" id="stars-coding" data-skill="coding"></div>
                 </div>
-
             </div>
         </div>
 
         <div class="preview-area">
             <div class="id-card" id="spaceCard">
+                <div class="id-card-barcode" id="cardBarcode">ASTR-2026-0000</div>
                 <div class="id-card-avatar-frame" id="avatarFrame">
                     <img id="avatarImage" src="img/hayvan_1_kostum_0.png" alt="Karakter">
                 </div>
                 <div class="id-card-name" id="cardName">ASTRONOT</div>
-                <div class="id-card-title">Uzay Akademisi Yetenek Kartı</div>
+                <div class="id-card-title">Akademi Yetenek Kartı</div>
                 
                 <div class="id-card-skills">
                     <div class="card-skill-item">
@@ -454,113 +519,166 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-download" onclick="downloadCard()">KARTIMI BAS (PNG İNDİR)</button>
+            
+            <div class="action-buttons">
+                <button class="btn btn-random" onclick="randomizeCharacter()">🎲 Şansıma Güven! (Rastgele)</button>
+                <button class="btn btn-download" onclick="downloadCard()">KARTIMI BAS (PNG İNDİR)</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Veri Setleri Tanımlamaları
-        const colors = ['#00f3ff', '#ff0055', '#9d00ff', '#00ff66', '#ff9900', '#ffff00', '#0044ff', '#ff3333'];
+        const colors = ['#bfe9db', '#dec9ff', '#fecdd3', '#bae6fd', '#fed7aa', '#bbf7d0', '#f5d0fe', '#fef08a'];
         const animals = ['Kedi', 'Köpek', 'Tavşan', 'Panda', 'Tilki', 'Koala', 'Ayı', 'Penguen'];
-        const costumes = ['Kostümsüz', 'Astronot Kaskı', 'Uzaylı Anteni', 'Siber Gözlük', 'Roket Çantası', 'Kaptan Şapkası'];
+        const costumes = ['Kostümsüz Base', 'Astronot Kaskı', 'Uzaylı Anteni', 'Siber Gözlük', 'Roket Çantası', 'Kaptan Şapkası'];
+        const skillKeys = ['tech', 'video', 'network', 'security', 'ai', 'coding'];
 
-        // Seçim Durumları (State)
         let selectedColor = colors[0];
-        let selectedAnimalIdx = 1; // 1-8 arası index
-        let selectedCostumeIdx = 0; // 0-5 arası index
+        let selectedAnimalIdx = 1; 
+        let selectedCostumeIdx = 0; 
+        let currentSkills = { tech: 1, video: 1, network: 1, security: 1, ai: 1, coding: 1 };
 
-        // Arayüzü İlk Açılışta Doldurma Fonksiyonları
         function initUI() {
-            // 1. Renk Seçenekleri Oluşturma
+            // Renkleri Üret
             const colorGrid = document.getElementById('colorGrid');
             colors.forEach((color, idx) => {
                 const div = document.createElement('div');
                 div.className = `color-opt ${idx === 0 ? 'selected' : ''}`;
                 div.style.backgroundColor = color;
-                div.onclick = function() {
-                    document.querySelectorAll('.color-opt').forEach(el => el.classList.remove('selected'));
-                    div.classList.add('selected');
-                    selectedColor = color;
-                    document.getElementById('avatarFrame').style.backgroundColor = color;
-                };
+                div.onclick = () => selectColor(color, div);
                 colorGrid.appendChild(div);
             });
 
-            // 2. Hayvan Seçenekleri Oluşturma
+            // Hayvanları Üret
             const animalGrid = document.getElementById('animalGrid');
             animals.forEach((animal, idx) => {
                 const div = document.createElement('div');
                 div.className = `animal-opt ${idx === 0 ? 'selected' : ''}`;
-                div.innerText = animal;
-                div.onclick = function() {
-                    document.querySelectorAll('.animal-opt').forEach(el => el.classList.remove('selected'));
-                    div.classList.add('selected');
-                    selectedAnimalIdx = idx + 1;
-                    updateAvatarSrc();
-                };
+                div.innerHTML = `<span style="font-size:24px; margin-bottom:5px;">🐾</span><span>${animal}</span>`;
+                div.onclick = () => selectAnimal(idx + 1, div);
                 animalGrid.appendChild(div);
             });
 
-            // 3. Kostüm Seçenekleri Oluşturma
+            // Kostümleri Üret
             const costumeGrid = document.getElementById('costumeGrid');
             costumes.forEach((costume, idx) => {
                 const div = document.createElement('div');
                 div.className = `costume-opt ${idx === 0 ? 'selected' : ''}`;
                 div.innerText = costume;
-                div.onclick = function() {
-                    document.querySelectorAll('.costume-opt').forEach(el => el.classList.remove('selected'));
-                    div.classList.add('selected');
-                    selectedCostumeIdx = idx;
-                    updateAvatarSrc();
-                };
+                div.onclick = () => selectCostume(idx, div);
                 costumeGrid.appendChild(div);
             });
-        }
 
-        // Seçimlere Göre Resim Yolunu Güncelleyen Fonksiyon
-        function updateAvatarSrc() {
-            const imgEl = document.getElementById('avatarImage');
-            // Kullanıcının önceden kaydettiği dosya adı yapısına (img/hayvan_X_kostum_Y.png) erişir
-            imgEl.src = `img/hayvan_${selectedAnimalIdx}_kostum_${selectedCostumeIdx}.png`;
-        }
-
-        // İsim Alanı Güncelleme
-        function updateName(val) {
-            document.getElementById('cardName').innerText = val.trim() === "" ? "ASTRONOT" : val.toUpperCase();
-        }
-
-        // Yıldız Tıklama Kontrolü
-        function handleStarClick(event, skillKey) {
-            if (!event.target.classList.contains('star')) return;
-            
-            const clickedValue = parseInt(event.target.getAttribute('data-value'));
-            const starContainer = event.currentTarget;
-            const stars = starContainer.querySelectorAll('.star');
-            
-            stars.forEach(star => {
-                const starVal = parseInt(star.getAttribute('data-value'));
-                if (starVal <= clickedValue) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
+            // Yıldız Yapılarını İnşa Et
+            skillKeys.forEach(key => {
+                const container = document.getElementById(`stars-${key}`);
+                for (let i = 1; i <= 5; i++) {
+                    const span = document.createElement('span');
+                    span.className = `star ${i === 1 ? 'active' : ''}`;
+                    span.setAttribute('data-value', i);
+                    span.innerText = '★';
+                    span.onclick = (e) => changeSkillRating(key, i);
+                    container.appendChild(span);
                 }
             });
 
+            generateRandomBarcode();
+        }
+
+        function selectColor(color, element) {
+            document.querySelectorAll('.color-opt').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedColor = color;
+            document.getElementById('avatarFrame').style.backgroundColor = color;
+        }
+
+        function selectAnimal(index, element) {
+            document.querySelectorAll('.animal-opt').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedAnimalIdx = index;
+            triggerAvatarAnimation();
+        }
+
+        function selectCostume(index, element) {
+            document.querySelectorAll('.costume-opt').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedCostumeIdx = index;
+            triggerAvatarAnimation();
+        }
+
+        // Dinamik Pop Animasyonu Tetikleyici
+        function triggerAvatarAnimation() {
+            const imgEl = document.getElementById('avatarImage');
+            imgEl.src = `img/hayvan_${selectedAnimalIdx}_kostum_${selectedCostumeIdx}.png`;
+            imgEl.classList.add('pop-effect');
+            setTimeout(() => imgEl.classList.remove('pop-effect'), 300);
+        }
+
+        function changeSkillRating(skillKey, value) {
+            currentSkills[skillKey] = value;
+            const container = document.getElementById(`stars-${skillKey}`);
+            const stars = container.querySelectorAll('.star');
+            
+            stars.forEach(star => {
+                const starVal = parseInt(star.getAttribute('data-value'));
+                star.classList.toggle('active', starVal <= value);
+            });
+
             let starString = "";
-            for(let i=1; i<=5; i++) {
-                starString += (i <= clickedValue) ? "★" : "☆";
+            for (let i = 1; i <= 5; i++) {
+                starString += (i <= value) ? "★" : "☆";
             }
             document.getElementById(`card-star-${skillKey}`).innerText = starString;
         }
 
-        // Kartı Görsel Olarak Bilgisayara İndirme Fonksiyonu
+        // TAMAMEN DİNAMİK RASTGELE SEÇİCİ (RANDOMIZER)
+        function randomizeCharacter() {
+            // 1. Rastgele Renk
+            const randColorIdx = Math.floor(Math.random() * colors.length);
+            const colorOpts = document.querySelectorAll('.color-opt');
+            selectColor(colors[randColorIdx], colorOpts[randColorIdx]);
+
+            // 2. Rastgele Hayvan ve Carousel Scroll
+            const randAnimalIdx = Math.floor(Math.random() * animals.length);
+            const animalOpts = document.querySelectorAll('.animal-opt');
+            selectAnimal(randAnimalIdx + 1, animalOpts[randAnimalIdx]);
+            animalOpts[randAnimalIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+            // 3. Rastgele Kostüm ve Carousel Scroll
+            const randCostumeIdx = Math.floor(Math.random() * costumes.length);
+            const costumeOpts = document.querySelectorAll('.costume-opt');
+            selectCostume(randCostumeIdx, costumeOpts[randCostumeIdx]);
+            costumeOpts[randCostumeIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+            // 4. Rastgele Yetenek Puanları
+            skillKeys.forEach(key => {
+                const randValue = Math.floor(Math.random() * 5) + 1;
+                changeSkillRating(key, randValue);
+            });
+
+            generateRandomBarcode();
+        }
+
+        function generateRandomBarcode() {
+            const chars = '0123456789ABCDEF';
+            let code = '';
+            for (let i = 0; i < 4; i++) {
+                code += chars[Math.floor(Math.random() * chars.length)];
+            }
+            document.getElementById('cardBarcode').innerText = `MÜRETTEBAT // RECOVERY-6B-${code}`;
+        }
+
+        function updateName(val) {
+            document.getElementById('cardName').innerText = val.trim() === "" ? "ASTRONOT" : val.toUpperCase();
+        }
+
         function downloadCard() {
             const card = document.getElementById('spaceCard');
             const studentName = document.getElementById('nameInput').value.trim() || "astronot";
             
             html2canvas(card, {
                 backgroundColor: null,
-                scale: 2 // Çıktının yüksek çözünürlüklü ve net basılması için
+                scale: 2 
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = `${studentName}_uzay_kimlik_karti.png`;
@@ -569,7 +687,6 @@
             });
         }
 
-        // Sayfa yüklendiğinde UI elementlerini inşa et
         window.onload = initUI;
     </script>
 </body>
