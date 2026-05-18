@@ -240,7 +240,7 @@
             letter-spacing: 1px;
         }
 
-        /* DİNAMİK BÜYÜK POP-UP (MODAL) STİLLERİ */
+        /* ÇOK DAHA BÜYÜK VE GENİŞ POP-UP (MODAL) ALANI */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -248,7 +248,7 @@
             width: 100%;
             height: 100%;
             background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -265,10 +265,11 @@
 
         .modal-wrapper {
             background: #ffffff;
-            width: 480px;
-            padding: 35px;
-            border-radius: 28px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            width: 850px; /* Çok daha büyük genişlik */
+            min-height: 580px;
+            padding: 45px;
+            border-radius: 36px;
+            box-shadow: 0 30px 70px rgba(15, 23, 42, 0.3);
             border: 1px solid rgba(255,255,255,0.8);
             display: flex;
             flex-direction: column;
@@ -282,47 +283,79 @@
         }
 
         .modal-title {
-            font-size: 18px;
+            font-size: 24px; /* Başlık büyütüldü */
             font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--text-color);
+            margin-bottom: 25px;
+            color: var(--space-blue);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        /* Pastel Renk Seçimi (Popup İçi) */
+        /* Serbest Renk Seçim Paneli (Her Zaman Aktif) */
+        .modal-color-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+        }
+
         .modal-color-label {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .modal-color-grid {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 14px;
         }
 
-        /* Büyük Karakter Karusel Alanı */
+        .color-opt {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .color-opt:hover {
+            transform: scale(1.1);
+        }
+
+        .color-opt.selected {
+            transform: scale(1.1);
+            border-color: var(--text-color);
+            box-shadow: 0 0 12px rgba(0,0,0,0.15);
+        }
+
+        /* DEVASE KARUSEL ALANI (OKLAR VE BÜYÜK RESİM) */
         .carousel-area {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 40px; /* Oklar ve resim arası açıldı */
+            margin-bottom: 35px;
             width: 100%;
         }
 
         .arrow-btn {
             background: #f1f5f9;
-            border: 1px solid var(--card-border);
+            border: 2px solid var(--card-border);
             color: var(--text-color);
-            width: 45px;
-            height: 45px;
+            width: 65px; /* Ok butonları devasa yapıldı */
+            height: 65px;
             border-radius: 50%;
-            font-size: 18px;
+            font-size: 26px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
@@ -336,15 +369,16 @@
             background: var(--space-blue);
             color: #ffffff;
             border-color: var(--space-blue);
+            transform: scale(1.05);
         }
 
-        /* Popup Büyük Profil Çerçevesi */
+        /* Çok Daha Büyük Karakter Profil Çerçevesi */
         .modal-avatar-frame {
-            width: 180px;
-            height: 180px;
-            border-radius: 24px;
-            border: 4px solid #ffffff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            width: 280px; /* Tamamen büyütülmüş çerçeve */
+            height: 280px;
+            border-radius: 32px;
+            border: 5px solid #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -361,7 +395,7 @@
         }
 
         .img-pop {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         /* Butonlar */
@@ -376,8 +410,9 @@
 
         .modal-nav-btns {
             display: flex;
-            gap: 12px;
+            gap: 16px;
             width: 100%;
+            max-width: 400px;
             justify-content: center;
         }
 
@@ -399,6 +434,8 @@
             color: white;
             width: 100%;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            font-size: 15px;
+            padding: 16px;
         }
 
         .btn-main-trigger:hover {
@@ -424,18 +461,25 @@
             background: var(--space-blue);
             color: white;
             width: 100%;
+            max-width: 400px;
+            font-size: 15px;
+            padding: 16px;
         }
 
         .btn-modal-save {
             background: #10b981;
             color: white;
             flex: 1;
+            font-size: 15px;
+            padding: 16px;
         }
 
         .btn-modal-prev {
             background: #e2e8f0;
             color: var(--text-color);
             flex: 1;
+            font-size: 15px;
+            padding: 16px;
         }
     </style>
 </head>
@@ -451,7 +495,7 @@
             </div>
 
             <div class="form-group">
-                <label>Avatar Tasarımı</label>
+                <label>Avatar Tasarım Terminali</label>
                 <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla / Değiştir 🎨</button>
             </div>
 
@@ -515,8 +559,8 @@
         <div class="modal-wrapper">
             <div class="modal-title" id="modalStageTitle">Aşama 1: Karakterini Seç</div>
             
-            <div id="modalColorSection" style="width:100%; display:flex; flex-direction:column; align-items:center;">
-                <div class="modal-color-label">Arka Plan Rengi Seç</div>
+            <div class="modal-color-section">
+                <div class="modal-color-label">Kabin Arka Plan Rengini Değiştir</div>
                 <div class="modal-color-grid" id="modalColorGrid"></div>
             </div>
 
@@ -528,7 +572,7 @@
                 <button class="arrow-btn" onclick="cycleSelection(1)">▶</button>
             </div>
 
-            <div id="modalNavArea" style="width:100%;">
+            <div id="modalNavArea" style="width:100%; display:flex; justify-content:center;">
                 </div>
         </div>
     </div>
@@ -539,19 +583,19 @@
         const totalCostumes = 6;
         const skillKeys = ['tech', 'video', 'network', 'security', 'ai', 'coding'];
 
-        // Kalıcı Durumlar (Main State)
+        // Kalıcı Seçimler
         let savedColor = colors[0];
         let savedAnimal = 1;
         let savedCostume = 0;
 
-        // Geçici Durumlar (Modal Temp State)
+        // Geçici Popup Seçimleri (Serbest Gezinme İçin)
         let tempColor = colors[0];
         let tempAnimal = 1;
         let tempCostume = 0;
         let currentStep = 1; // 1: Hayvan Seçimi, 2: Kostüm Seçimi
 
         function initUI() {
-            // Yıldızları oluştur
+            // Yıldızları ekle
             skillKeys.forEach(key => {
                 const container = document.getElementById(`stars-${key}`);
                 for (let i = 1; i <= 5; i++) {
@@ -564,13 +608,13 @@
                 }
             });
 
-            // Renkleri Popupa Ekle
+            // Serbest Pastel Renkleri Popupa İnşa Et
             const modalColorGrid = document.getElementById('modalColorGrid');
             colors.forEach((color, idx) => {
                 const div = document.createElement('div');
                 div.className = `color-opt ${idx === 0 ? 'selected' : ''}`;
                 div.style.backgroundColor = color;
-                div.onclick = () => {
+                div.onclick = function() {
                     document.querySelectorAll('.modal-color-grid .color-opt').forEach(el => el.classList.remove('selected'));
                     div.classList.add('selected');
                     tempColor = color;
@@ -582,64 +626,59 @@
             generateRandomBarcode();
         }
 
-        // POPUP AÇMA
+        // POPUP AÇILIŞ SÜRECİ
         function openAvatarModal() {
             currentStep = 1;
             tempColor = savedColor;
             tempAnimal = savedAnimal;
-            tempCostume = 0; // Hayvan seçerken kostümsüz başlasın
+            tempCostume = savedCostume;
 
             document.getElementById('modalAvatarFrame').style.backgroundColor = tempColor;
             
-            // Renk paleti seçkisini güncelle
+            // Renk vurgusunu mevcut renge göre güncelle
             const colorOpts = document.querySelectorAll('.modal-color-grid .color-opt');
             colorOpts.forEach(opt => {
-                opt.classList.toggle('selected', opt.style.backgroundColor === rgbToHex(tempColor));
+                opt.classList.toggle('selected', rgbToHex(opt.style.backgroundColor) === rgbToHex(tempColor));
             });
 
             updateModalView();
             document.getElementById('avatarModal').classList.add('active');
         }
 
-        // POPUP İÇERİĞİNİ ADIMA GÖRE GÜNCELLEME
+        // BÜYÜK EKRAN GÖRÜNÜM GÜNCELLEMESİ
         function updateModalView() {
             const imgEl = document.getElementById('modalAvatarImage');
             const titleEl = document.getElementById('modalStageTitle');
-            const colorSection = document.getElementById('modalColorSection');
             const navArea = document.getElementById('modalNavArea');
 
             if (currentStep === 1) {
                 titleEl.innerText = "Aşama 1: Karakterini Seç";
-                colorSection.style.display = "flex";
+                // Hayvan seçerken kostümsüz baz hallerini okla gösterir
                 imgEl.src = `img/hayvan_${tempAnimal}_kostum_0.png`;
-                
-                navArea.innerHTML = `<button class="btn btn-modal-next" onclick="goToStepTwo()">Sonraki ➔</button>`;
+                navArea.innerHTML = `<button class="btn btn-modal-next" onclick="goToStepTwo()">Sonraki Aşama (Kostüm Donat) ➔</button>`;
             } else {
                 titleEl.innerText = "Aşama 2: Kostümünü Seç";
-                colorSection.style.display = "none";
-                imgEl.src = `img/hayvan_${tempAnimal}_tempCostume_${tempCostume}.png`; // Güncel resim basımı
+                // Kostüm seçerken seçilen hayvanın üzerine kostümü giydirip gösterir
                 imgEl.src = `img/hayvan_${tempAnimal}_kostum_${tempCostume}.png`;
-
                 navArea.innerHTML = `
                     <div class="modal-nav-btns">
-                        <button class="btn btn-modal-prev" onclick="goToStepOne()">◀ Önceki</button>
-                        <button class="btn btn-modal-save" onclick="saveModalChanges()">Kaydet ✓</button>
+                        <button class="btn btn-modal-prev" onclick="goToStepOne()">◀ Karakter Değiştir</button>
+                        <button class="btn btn-modal-save" onclick="saveModalChanges()">Tasarımı Kaydet ✓</button>
                     </div>`;
             }
-            // Zıplama efekti
+            
+            // Büyük görsel için tatlı pop efekti
             imgEl.classList.add('img-pop');
             setTimeout(() => imgEl.classList.remove('img-pop'), 200);
         }
 
-        // OK TUŞLARINA BASINCA DÖNGÜSEL GEÇİŞ (CYCLE)
+        // OK SİSTEMİYLE GÖRSEL GEZİNME (DÖNGÜSEL)
         function cycleSelection(direction) {
             if (currentStep === 1) {
-                // Hayvanları Döndür (1 - 8)
                 tempAnimal += direction;
                 if (tempAnimal > totalAnimals) tempAnimal = 1;
                 if (tempAnimal < 1) tempAnimal = totalAnimals;
             } else {
-                // Kostümleri Döndür (0 - 5)
                 tempCostume += direction;
                 if (tempCostume >= totalCostumes) tempCostume = 0;
                 if (tempCostume < 0) tempCostume = totalCostumes - 1;
@@ -649,7 +688,6 @@
 
         function goToStepTwo() {
             currentStep = 2;
-            tempCostume = 0; // Kostüm seçimine geçerken kostümsüzden başlasın
             updateModalView();
         }
 
@@ -658,21 +696,21 @@
             updateModalView();
         }
 
-        // KAYDET VE POPUPTAN ÇIK
+        // VERİLERİ ANA KARTA AKTAR VE ÇIK
         function saveModalChanges() {
             savedColor = tempColor;
             savedAnimal = tempAnimal;
             savedCostume = tempCostume;
 
-            // Ana ekrandaki kartı güncelle
+            // Kartı güncelle
             document.getElementById('avatarFrame').style.backgroundColor = savedColor;
             document.getElementById('avatarImage').src = `img/hayvan_${savedAnimal}_kostum_${savedCostume}.png`;
 
-            // Popup Kapat
+            // Kapat
             document.getElementById('avatarModal').classList.remove('active');
         }
 
-        // YETENEK PUANI AYARI
+        // YETENEK DEĞERLENDİRME TETİKLEYİCİSİ
         function changeSkillRating(skillKey, value) {
             const container = document.getElementById(`stars-${skillKey}`);
             const stars = container.querySelectorAll('.star');
@@ -688,7 +726,7 @@
             document.getElementById(`card-star-${skillKey}`).innerText = starString;
         }
 
-        // RASTGELE HIZLI OLUŞTURUCU
+        // RASTGELE HIZLI OLUŞTURUCU (KART ALTI)
         function randomizeCharacter() {
             savedColor = colors[Math.floor(Math.random() * colors.length)];
             savedAnimal = Math.floor(Math.random() * totalAnimals) + 1;
@@ -726,10 +764,10 @@
             });
         }
 
-        // Yardımcı fonksiyon: rgb rengini hex formata dönüştürür (seçili rengi eşleştirmek için)
         function rgbToHex(rgb) {
-            if (rgb.startsWith('#')) return rgb;
+            if (!rgb || rgb.startsWith('#')) return rgb;
             const rgbValues = rgb.match(/\d+/g);
+            if (!rgbValues) return rgb;
             return "#" + ((1 << 24) + (parseInt(rgbValues[0]) << 16) + (parseInt(rgbValues[1]) << 8) + parseInt(rgbValues[2])).toString(16).slice(1);
         }
 
