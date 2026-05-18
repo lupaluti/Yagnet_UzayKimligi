@@ -509,25 +509,25 @@
 </head>
 <body>
 
-    <h1>MÜRETTEBAT KAYIT TERMİNALİ</h1>
+    <h1>Yagnet Uzay Kimliğim</h1>
 
     <div class="container">
         <div class="control-panel">
             <div class="form-group">
-                <label>Mürettebat Çağrı Kodu (Ad Soyad)</label>
-                <input type="text" id="nameInput" placeholder="Kaptan İsmini Yazın..." oninput="updateName(this.value)">
+                <label>Takma Adınız</label>
+                <input type="text" id="nameInput" placeholder="Takma Adınızı Yazınız..." oninput="updateName(this.value)">
             </div>
 
             <div class="form-group">
                 <label>Avatar Tasarım Terminali</label>
-                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla / Değiştir 🎨</button>
+                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla</button>
             </div>
 
             <div class="form-group">
-                <label>Yetenek Seviyelerin (Öz Değerlendirme)</label>
+                <label>Yetenek Seviyelerin</label>
                 
                 <div class="skill-row">
-                    <span class="skill-name">Yenilikçi Teknolojiler</span>
+                    <span class="skill-name">Yenilikçi Teknoloji Bilgisi</span>
                     <div class="stars" id="stars-tech"></div>
                 </div>
                 <div class="skill-row">
@@ -543,7 +543,7 @@
                     <div class="stars" id="stars-security"></div>
                 </div>
                 <div class="skill-row">
-                    <span class="skill-name">Yapay Zekâ Mantığı</span>
+                    <span class="skill-name">Yapay Zekâ Kullanımı</span>
                     <div class="stars" id="stars-ai"></div>
                 </div>
                 <div class="skill-row">
@@ -573,8 +573,8 @@
             </div>
             
             <div class="action-buttons">
-                <button class="btn btn-random" onclick="randomizeCharacter()">🎲 Şansıma Güven! (Rastgele)</button>
-                <button class="btn btn-download" onclick="downloadCard()">KARTIMI BAS (PNG İNDİR)</button>
+                <button class="btn btn-random" onclick="randomizeCharacter()">Rastgele Avatar</button>
+                <button class="btn btn-download" onclick="downloadCard()">Kimliğim (.png indir)</button>
             </div>
         </div>
     </div>
@@ -583,7 +583,7 @@
         <div class="modal-wrapper">
             <button class="modal-close-btn" onclick="closeAvatarModal()">&times;</button>
             
-            <div class="modal-title" id="modalStageTitle">Aşama 1: Karakterini Seç</div>
+            <div class="modal-title" id="modalStageTitle">Karakterini Seç</div>
             
             <div class="modal-color-section">
                 <div class="modal-color-label">Kabin Arka Plan Rengini Değiştir</div>
