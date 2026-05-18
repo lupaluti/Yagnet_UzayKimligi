@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzay Akademisi - Yetenek Kartı Üreticisi</title>
+    <title>Yagnet Uzay Kimliği</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
@@ -14,6 +14,11 @@
             --space-blue: #3b82f6;
             --star-color: #ffb703;
             --card-border: #cbd5e1;
+        }
+
+        /* Tüm elemanlar için box-sizing ayarı mobilde taşmaları engeller */
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -59,7 +64,6 @@
             flex: 1.3;
             min-width: 380px;
             box-shadow: 0 10px 30px rgba(148, 163, 184, 0.15);
-            box-sizing: border-box;
         }
 
         .form-group {
@@ -90,7 +94,6 @@
             border: 1px solid var(--card-border);
             border-radius: 10px;
             color: var(--text-color);
-            box-sizing: border-box;
             font-size: 15px;
         }
 
@@ -145,7 +148,6 @@
             border: 2px solid var(--card-border);
             box-shadow: 0 15px 40px rgba(148, 163, 184, 0.25);
             padding: 25px;
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -277,8 +279,7 @@
             align-items: center;
             transform: scale(0.9);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            box-sizing: border-box;
+            position: relative; 
         }
 
         .modal-overlay.active .modal-wrapper {
@@ -320,7 +321,6 @@
             color: var(--space-blue);
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-align: center;
         }
 
         /* Serbest Renk Seçim Paneli */
@@ -334,7 +334,6 @@
             padding: 15px;
             border-radius: 16px;
             border: 1px solid #f1f5f9;
-            box-sizing: border-box;
         }
 
         .modal-color-label {
@@ -349,8 +348,6 @@
         .modal-color-grid {
             display: flex;
             gap: 14px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .color-opt {
@@ -512,7 +509,7 @@
             padding: 16px;
         }
 
-        /* 📱 CRITICAL RESPONSIVE BREAKPOINT (MOBİL UYUMLULUK MOTORU) */
+        /* 📱 MOBİL VE TABLET UYUMLULUK SORGULARI (RESPONSIVE STYLES) */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -540,10 +537,10 @@
                 width: 100%;
             }
 
-            /* Mobil Devasa Popup Düzenlemesi */
+            /* Büyük Popup Ekranının Mobil Ölçeklendirmesi */
             .modal-wrapper {
-                width: 92%;
-                padding: 25px 20px;
+                width: 94%;
+                padding: 30px 15px;
                 min-height: unset;
             }
 
@@ -555,9 +552,12 @@
             .modal-close-btn {
                 top: 15px;
                 right: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 22px;
             }
 
-            /* Karusel Mobilde Sıkıştırılıyor */
+            /* Karusel ve Ok Butonları Mobilde Küçülüyor */
             .carousel-area {
                 gap: 15px;
                 margin-bottom: 25px;
@@ -567,6 +567,7 @@
                 width: 48px;
                 height: 48px;
                 font-size: 18px;
+                border-width: 1px;
             }
 
             .modal-avatar-frame {
@@ -580,39 +581,65 @@
                 margin-bottom: 20px;
             }
 
+            .modal-color-grid {
+                gap: 8px;
+                justify-content: center;
+            }
+
             .color-opt {
-                width: 32px;
-                height: 32px;
+                width: 34px;
+                height: 34px;
             }
 
             .btn {
                 padding: 12px 20px;
                 font-size: 13px;
             }
+            
+            .btn-modal-next, .btn-modal-save, .btn-modal-prev {
+                font-size: 13px;
+                padding: 14px;
+            }
+        }
+
+        /* Ekstra Küçük Ekran Güvenlik Duvarı (Örn: iPhone SE / 320px Genişlik) */
+        @media (max-width: 360px) {
+            .id-card {
+                transform: scale(0.9);
+                margin: -25px 0;
+            }
+            .modal-avatar-frame {
+                width: 150px;
+                height: 150px;
+            }
+            .arrow-btn {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>MÜRETTEBAT KAYIT TERMİNALİ</h1>
+    <h1>Yagnet Uzay Kimliğim</h1>
 
     <div class="container">
         <div class="control-panel">
             <div class="form-group">
-                <label>Mürettebat Çağrı Kodu (Ad Soyad)</label>
-                <input type="text" id="nameInput" placeholder="Kaptan İsmini Yazın..." oninput="updateName(this.value)">
+                <label>Takma Adınız</label>
+                <input type="text" id="nameInput" placeholder="Takma Adınızı Yazınız..." oninput="updateName(this.value)">
             </div>
 
             <div class="form-group">
                 <label>Avatar Tasarım Terminali</label>
-                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla / Değiştir 🎨</button>
+                <button class="btn btn-main-trigger" onclick="openAvatarModal()">Karakterini Tasarla</button>
             </div>
 
             <div class="form-group">
-                <label>Yetenek Seviyelerin (Öz Değerlendirme)</label>
+                <label>Yetenek Seviyelerin</label>
                 
                 <div class="skill-row">
-                    <span class="skill-name">Yenilikçi Teknolojiler</span>
+                    <span class="skill-name">Yenilikçi Teknoloji Bilgisi</span>
                     <div class="stars" id="stars-tech"></div>
                 </div>
                 <div class="skill-row">
@@ -628,7 +655,7 @@
                     <div class="stars" id="stars-security"></div>
                 </div>
                 <div class="skill-row">
-                    <span class="skill-name">Yapay Zekâ Mantığı</span>
+                    <span class="skill-name">Yapay Zekâ Kullanımı</span>
                     <div class="stars" id="stars-ai"></div>
                 </div>
                 <div class="skill-row">
@@ -652,14 +679,14 @@
                     <div class="card-skill-item"><span class="card-skill-label">Video Tasarım</span><span class="card-skill-stars" id="card-star-video">★☆☆☆☆</span></div>
                     <div class="card-skill-item"><span class="card-skill-label">Ağ ve İnternet</span><span class="card-skill-stars" id="card-star-network">★☆☆☆☆</span></div>
                     <div class="card-skill-item"><span class="card-skill-label">Siber Güvenlik</span><span class="card-skill-stars" id="card-star-security">★☆☆☆☆</span></div>
-                    <div class="card-skill-item"><span class="card-skill-label">Yapay Zekâ Mantığı</span><span class="card-skill-stars" id="card-star-ai">★☆☆☆☆</span></div>
+                    <div class="card-skill-item"><span class="card-skill-label">Yapay Zekâ</span><span class="card-skill-stars" id="card-star-ai">★☆☆☆☆</span></div>
                     <div class="card-skill-item"><span class="card-skill-label">Blok Kodlama</span><span class="card-skill-stars" id="card-star-coding">★☆☆☆☆</span></div>
                 </div>
             </div>
             
             <div class="action-buttons">
-                <button class="btn btn-random" onclick="randomizeCharacter()">🎲 Şansıma Güven! (Rastgele)</button>
-                <button class="btn btn-download" onclick="downloadCard()">KARTIMI BAS (PNG İNDİR)</button>
+                <button class="btn btn-random" onclick="randomizeCharacter()">Rastgele Avatar</button>
+                <button class="btn btn-download" onclick="downloadCard()">Kimliğim (png indir)</button>
             </div>
         </div>
     </div>
@@ -668,7 +695,7 @@
         <div class="modal-wrapper">
             <button class="modal-close-btn" onclick="closeAvatarModal()">&times;</button>
             
-            <div class="modal-title" id="modalStageTitle">Aşama 1: Karakterini Seç</div>
+            <div class="modal-title" id="modalStageTitle">Karakterini Seç</div>
             
             <div class="modal-color-section">
                 <div class="modal-color-label">Kabin Arka Plan Rengini Değiştir</div>
